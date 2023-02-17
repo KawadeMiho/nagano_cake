@@ -1,0 +1,30 @@
+<h1>注文履歴詳細</h1>
+
+ <h2>購入者</h2>
+ <p><%= @order.name %></p>
+
+ <h2>注文日</h2>
+ <p><%= @order.created_at.strftime("%Y/%m/%d") %></p>
+
+ <h2>配送先</h2>
+ <p><%= @order.postal_code %><%= @order.address %><%= @order.name %></p>
+
+ <h2>支払方法</h2>
+ <p><%= @order.payment_method_i18n %></p>
+
+ <h2>注文ステータス</h2>
+ <p><%= form_with model: @order,url:admin_order_path(@order.id),method: :patch do |f| %>
+    <%= f.select :status,[['入金待ち','waiting'], ['入金確認','confirmation'], ['製作中','production'],['発送準備中','shipping_preparation'],['発送済み','shipped']] %>
+    <%= f.submit "更新",class: "btn btn-sm btn-success" %>
+    <% end %>
+ </p>
+
+
+<div class="col-12 clearfix">
+  <div class="float-right test-box">
+    <div class="d-flex flex-column bd-highlight mb-3">
+      <div class="p-2 bd-highlight">商品合計<%= @order.total_payment %>円</div>
+      <div class="p-2 bd-highlight">送料<%= @order.shipping_cost %>円</div>
+       <div class="p-2 bd-highlight">請求金額合計<%= @order.total_payment += @order.shipping_cost %>円</div>
+  </div>
+</div>

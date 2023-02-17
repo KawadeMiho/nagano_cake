@@ -1,0 +1,17 @@
+<h1>商品詳細</h1>
+
+<%#= link_to cart_items_path %>
+<p><%#=image_tag @item.image, size: "100×100" %></p>
+<p><%= @item.name %></p>
+<p><%= @item.introduction %></p>
+<p><%= @item.price %></p>
+
+
+<% if @item.is_active == true %>
+  <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true)do |f| %>
+    <%= f.label :amount, "個数選択" %>
+      <%= f.select :amount, *[1..10] %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.submit "カートに入れる" %>
+            <% end %>
+              <% end %>
