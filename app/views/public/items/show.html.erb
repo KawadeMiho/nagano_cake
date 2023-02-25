@@ -1,17 +1,37 @@
-<h1>商品詳細</h1>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-4">
+       <%= image_tag @item.get_image(200,200) %>
+    </div>
 
-<%#= link_to cart_items_path %>
-<p><%#=image_tag @item.image, size: "100×100" %></p>
-<p><%= @item.name %></p>
-<p><%= @item.introduction %></p>
-<p><%= @item.price %></p>
-
-
-<% if @item.is_active == true %>
-  <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true)do |f| %>
-    <%= f.label :amount, "個数選択" %>
-      <%= f.select :amount, *[1..10] %>
-        <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.submit "カートに入れる" %>
-            <% end %>
+    <div class="col-md-8">
+       <table class= "table table-borderless">
+         <tbody>
+           <tr>
+             <td></td>
+             <td><%= @item.name %></td>
+            </tr>
+           <tr>
+             <td></td>
+             <td><%= @item.introduction %></td>
+           </tr>
+           <tr>
+             <td></td>
+             <td>￥<%= @item.price %>(税込)</td>
+           </tr>
+           <tr>
+             <td></td>
+             <td>
+               <% if @item.is_active == true %>
+                 <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true)do |f| %>
+                 <%= f.label :amount, "個数選択" %>
+                 <%= f.select :amount, *[1..10] %>
+                 <%= f.hidden_field :item_id, :value => @item.id %>
+                 <%= f.submit "カートに入れる",class: "btn btn-sm btn-success ml-4" %>
+             </td>
+           </tr>
               <% end %>
+              <% end %>
+        　</tbody>
+       </table>
+    </div>

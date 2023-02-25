@@ -1,33 +1,58 @@
-<h1>マイページ</h1>
+<p class="h3 ml-5">マイページ</p>
+ <div class="col-md-8">
+ <table class= "table table-borderless">
+  <tbody>
+   <tr>
+     <td>登録情報</td>
+     <td><%= link_to "編集する",customers_information_edit_path,class: "btn btn-sm btn-success" %></td>
+   </tr>
+  </tbody>
+ </table>
+ </div>
 
-<h2>登録情報</h2> <%= link_to "編集する",customers_information_edit_path %>
+ <div class="col-md-8">
+   <table class= "table table-bordered">
+     <tbody>
+       <tr>
+         <td>氏名</td>
+         <td><%= @customer.last_name + @customer.first_name %></td>
+       </tr>
+       <tr>
+        <td>カナ</td>
+        <td><%= @customer.last_name_kana + @customer.first_name_kana %></td>
+       </tr>
+       <tr>
+        <td>郵便番号</td>
+        <td><%= @customer.postal_code %></td>
+       </tr>
+       <tr>
+        <td>住所</td>
+        <td><%= @customer.address %></td>
+       </tr>
+       <tr>
+        <td>電話番号</td>
+        <td><%= @customer.telephone_number %></td>
+       </tr>
+       <tr>
+        <td>メールアドレス</td>
+        <td><%= @customer.email %></td>
+       </tr>
+       </tbody>
+   </table>
+ </div>
 
-<table>
- <thead>
-  <tr>
-   <th>氏名</th>
-   <th>カナ</th>
-   <th>郵便番号</th>
-   <th>住所</th>
-   <th>電話番号</th>
-   <th>メールアドレス</th>
-  </tr>
- </thead>
- <tbody>
-  <tr>
-   <td><%= @customer.last_name + @customer.first_name %></td>
-   <td><%= @customer.last_name_kana + @customer.first_name_kana %></td>
-   <td><%= @customer.postal_code %></td>
-   <td><%= @customer.address %></td>
-   <td><%= @customer.telephone_number %></td>
-   <td><%= @customer.email %></td>
-  </tr>
- </tbody>
- </thead>
-</table>
+ <div class="col-md-8">
+   <table class="table table-borderless">
+     <tbody>
+      <tr>
+       <td>配送先</td>
+       <td><%= link_to "一覧を見る",addresses_path, class: "btn btn-primary ml-5" %></td>
+      </tr>
+      <tr>
+       <td>注文履歴</td>
+       <td><%= link_to "一覧を見る",orders_path, class: "btn btn-primary ml-5" %></td>
+      </tr>
+     </tbody>
+   </table>
+ </div>
 
-<h2>配送先</h2>
-<%= link_to "一覧を見る",addresses_path %>
-
-<h2>注文履歴</h2>
-<%= link_to "一覧を見る",orders_path %>

@@ -12,6 +12,8 @@ get 'customers/my_page' => 'public/customers#show'
 get 'customers/information/edit' => 'public/customers#edit'
 get  '/home/about' => 'public/homes#about',as: "about"
 delete  '/cart_items/destroy_all' => 'public/cart_items#destroy_all',as: "destroy_all"
+get  'customers/unsubscribe' => 'public/customers#unsubscribe'
+patch 'customers/withdraw' => 'public/customers#withdraw'
 scope module: :public do
 resources :items
 resources :cart_items

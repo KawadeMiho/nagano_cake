@@ -1,6 +1,7 @@
-<h2>会員詳細</h2>
-
-<table class="table table-borderless">
+<p class="h3 ml-5">会員詳細</p>
+<div class= "row">
+  <div class= "col-md-5">
+<table class="table table-borderless ml-5">
     <tr>
       <th>会員ID</th>
       <th><%= @customer.id %></th>
@@ -38,10 +39,12 @@
     </tr>
       <% end %>
 </table>
-<table class="table table-borderless">
+<table class="table table-borderless ">
   <tr>
     <th><%= link_to  "編集する" ,edit_admin_customer_path(@customer),class: "btn btn-sm btn-success ml-5" %></th>
-    <th><%= link_to  "注文履歴一覧を見る",admin_path, class: "btn btn-primary" %></th>
+    <th><%= link_to  "注文履歴一覧を見る",admin_path, class: "btn btn-primary ml-5" %></th>
   </tr>
 </table>
+</div>
+</div>
 

@@ -1,44 +1,42 @@
-<h1>商品編集</h1>
-<table class="table">
-<div class= "text-center">
-<%= form_with model: @item,url: admin_item_path(@item.id),method: :patch do |f| %>
-<div class= "form-group">
- <label for="inputImage">商品画像</label>
- <%= f.file_field :item_image, accept: "image/*" %>
+<p class="h3 ml-5">商品編集</p>
+ <div class="container">
+  <div class="row justify-content-md-center">
+    <%= form_with model: @item,url: admin_item_path(@item.id),method: :patch do |f| %>
+   <table class="table table-borderless">
+     <tbody>
+       <tr>
+         <td>商品画像</td>
+         <td><%= f.file_field :image, accept: "image/*" %></td>
+       </tr>
+       <tr>
+         <td>商品名</td>
+         <td><%= f.text_field :name %></td>
+       </tr>
+       <tr>
+         <td>商品説明</td>
+         <td><%= f.text_area :introduction %></td>
+       </tr>
+       <tr>
+         <td>ジャンル</td>
+         <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></td>
+       </tr>
+       <tr>
+         <td>税抜価格</td>
+         <td><%= f.text_field :price %>円</td>
+       </tr>
+       <tr>
+         <td>販売ステータス</td>
+         <td><%=f.radio_button :is_active, true %>
+             <%= f.label :is_active_active, "販売中" %>
+             <%= f.radio_button :is_active, false %>
+             <%= f.label :is_active_inactive, "販売停止中" %></td>
+       </tr>
+       <tr>
+         <td></td>
+         <td><%= f.submit "変更を保存",class: "btn btn-sm btn-success" %></td>
+       </tr>
+     </tbody>
+    </table>
+     <% end %>
 </div>
-
-<div class= "form-group">
-  <label for="inputName">商品名</label>
-  <%= f.text_field :name %>
 </div>
-
-<div class= "form-group">
-  <label for="inputIntroduction">商品説明</label>
-　<%= f.text_area :introduction %>
-</div>
-
-<div class= "form-group">
-  <label for="inputgenre_id">ジャンル</label>
-　<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
-</div>
-
-<div class= "form-group">
-  <label for="inputprice">税抜価格</label>
-  <%= f.text_field :price %>円
-</div>
-
-<div class= "form-group">
-  <label for="inputIs_Active">販売ステータス</label>
-  <%=f.radio_button :is_active, true %>
-  <%= f.label :is_active_active, "販売中" %>
-  <%= f.radio_button :is_active, false %>
-  <%= f.label :is_active_inactive, "販売停止中" %>
-</div>
-
-<div class="form-group">
-<%= f.submit "変更を保存",class: "btn btn-sm btn-success" %>
-</div>
-
-<% end %>
-</div>
-</table>

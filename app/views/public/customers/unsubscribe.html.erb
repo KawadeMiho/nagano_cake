@@ -1,0 +1,11 @@
+<p class="h3 ml-5">本当に退会しますか?</p>
+
+<p>退会すると、会員登録情報や</p>
+<p>これまでの購入履歴が閲覧できなくなります。</p>
+<p>退会する場合は、「退会する」をクリックしてください。</p>
+
+<%= link_to "退会しない",customers_my_page_path,class: "btn btn-primary ml-5" %>
+
+<%= form_with model: @customer,url: customers_withdraw_path,method: :patch do |f| %>
+<%= f.submit "退会する",class: "btn btn-danger" %>
+<% end %>

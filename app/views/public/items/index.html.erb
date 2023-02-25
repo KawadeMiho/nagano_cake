@@ -5,9 +5,9 @@
 <%= link_to item.name,item_path(item.id) %>
 <%= link_to item_path(item.id) do%>
 <% if item.image.attached? %>
-<%= image_tag item.image, size: "100x100" %>
+<%= image_tag item.image,size: "200x200" %>
 <% else %>
-<%= image_tag 'no_image', size: "100x100" %>
+<%= image_tag 'no_image', size: "200x200" %>
 <% end %>
 <% end %>
 <p><%= item.price %></p>
