@@ -75,7 +75,7 @@
            <%= f.hidden_field :shipping_cost,:value => @order.shipping_cost  %>
            <%= f.hidden_field :total_payment,:value => @total_payment  %>
            <%= f.hidden_field :payment_method,:value => @order.payment_method  %>
-           <%= f.hidden_field :status,:value => "['入金待ち',0]"%>
+           <%= f.hidden_field :status,:value => @order.status %>
            <%= f.submit "注文を確定する",class: "btn btn-primary ml-5" %>
         </td>
       </tr>

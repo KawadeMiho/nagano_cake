@@ -51,6 +51,7 @@ class Public::OrdersController < ApplicationController
    @order.address = params[:order][:address_id]
    @order.name = params[:order][:name]
   end
+   @order.status = 0
  end
 
  private

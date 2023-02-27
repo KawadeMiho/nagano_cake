@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to:"public/homes#top"
   devise_for :admin, skip: [:registrations, :passwords] ,controllers:{
     sessions: "admin/sessions"
   }
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-get 'top' => 'public/homes#top'
+
 get 'customers/my_page' => 'public/customers#show'
 get 'customers/information/edit' => 'public/customers#edit'
 get  '/home/about' => 'public/homes#about',as: "about"
