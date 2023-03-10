@@ -1,8 +1,40 @@
-<div class="container">
-<p class="text-center h1">ようこそ、ながのCAKEへ!</p>
-<p class="text-center">このサイトは、ケーキ販売のECサイトになります。</p>
-<p class="text-center">会員でない方も商品の閲覧はできますが、</p>
-<p class="text-center">購入には会員登録が必要になります。</p>
+<div class="container card">
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-12 center-contents">
+      <%= image_tag 'hedgehog.jpg',class: "card-img" %>
+    <div class= "card-img-overlay">
+    <div class="row card-text-top">
+    <h1 class="card-title offset-md-4">ようこそ、ながのCAKEへ!</h1>
+    <p class="card-text offset-md-4">このサイトは、ケーキ販売のECサイトになります。</p>
+    <p class="card-text offset-md-4">会員でない方も商品の閲覧はできますが、</p>
+    <p class="card-text offset-md-4">購入には会員登録が必要になります。</p>
+    </div>
+    </div>
+    </div>
+   </div>
+  </div>
 </div>
 
+
+
 <p class="h2 ml-5">新着商品</p>
+
+
+<div class= "row">
+ <% @items.each do |item| %>
+  <div class= "col">
+    <div class="d-inline-block">
+      <%= link_to item_path(item.id) do %>
+        <% if item.image.attached? %>
+        <%= image_tag item.image,size: "200x200" %>
+        <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+        <% end %>
+        <div><%= item.name %></div>
+        <div>¥<%= item.price %></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+</div>

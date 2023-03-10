@@ -8,11 +8,25 @@ class Admin::OrderDetailsController < ApplicationController
   end
 
   def update
-   order_detail= OrderDetail.find(params[:id])
-   order_detail.update(order_detail_params)
-   order= order_detail.order
-   redirect_to admin_order_path(order.id)
+   @order_detail= OrderDetail.find(params[:id])
+    @orders= Order.all
+    if params[:order_detail][:making_status] == "production"
+     @order_detail.update(order_detail_params)
+      @orders.each do |order|
+       order.status= "production"
+        @orders.update(status: order.status)
+      end
+    end
+    if params[:order_detail][:making_status] == "production_completed"
+     @order_detail.update(order_detail_params)
+      @orders.each do |order|
+       order.status= "shipping_preparation"
+        @orders.update(status: order.status)
+      end
+    end
+    redirect_to admin_order_path(@order_detail.order)
   end
+
 
   private
   def order_detail_params

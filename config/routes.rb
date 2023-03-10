@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 get 'customers/my_page' => 'public/customers#show'
+patch 'customers/information' => 'public/customers#update'
 get 'customers/information/edit' => 'public/customers#edit'
 get  '/home/about' => 'public/homes#about',as: "about"
 delete  '/cart_items/destroy_all' => 'public/cart_items#destroy_all',as: "destroy_all"

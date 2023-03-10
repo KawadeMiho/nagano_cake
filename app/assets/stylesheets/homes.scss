@@ -1,3 +1,19 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+.card-img{
+  width: 100;
+}
+
+.card-img-overlay{
+  padding: 0;
+  top: calc(50% -0.5rem);
+  text-align: center;
+  font-weight: bold;
+}

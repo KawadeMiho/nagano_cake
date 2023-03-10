@@ -1,5 +1,8 @@
 <p class="h3 ml-5">管理者ログイン</p>
 
+ <div class="container">
+  <div class="row justify-content-md-center">
+   <div class="col-md-8">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :メールアドレス %><br />
@@ -19,8 +22,12 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "ログイン",class: "btn btn-primary btn-lg btn-block" %>
+    <%= f.submit "ログイン",class: "btn btn-primary ml-5" %>
   </div>
 <% end %>
+
+   </div>
+ </div>
+</div>
 
 <%= render "admin/shared/links" %>

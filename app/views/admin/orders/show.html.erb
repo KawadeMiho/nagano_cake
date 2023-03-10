@@ -37,7 +37,7 @@
   <div class="row">
     <div class="col-md-8">
    <table class= "table border-top table-sm">
-  <thead class="thead-light">
+  <thead class="thead-light ">
     <tr>
       <th>商品名</th>
       <th>単価(税込)</th>
@@ -53,7 +53,7 @@
       <td><%= order_detail.purchas_price %></td>
       <td><%= order_detail.amount %></td>
       <td><%= order_detail.amount*order_detail.purchas_price %></td>
-      <td><%= form_with model: order_detail,url:admin_order_path(order_detail.id),method: :patch do |f| %>
+      <td><%= form_with model: order_detail,url: admin_order_detail_path(order_detail.id),method: :patch do |f| %>
           <%= f.select :making_status,[['着手不可','cannot_start'], ['製作待ち','waiting_for_production'], ['製作中','production'],['発送準備中','shipping_preparation'],['製作完了','production_completed']] %>
           <%= f.submit "更新",class: "btn btn-sm btn-success" %>
       <% end %></td>
@@ -68,9 +68,9 @@
 <div class="col-12 clearfix">
   <div class="float-right test-box">
     <div class="d-flex flex-column bd-highlight mb-3">
-      <div class="p-2 bd-highlight font-weight-bold">商品合計<%= @order.total_payment %>円</div>
+      <div class="p-2 bd-highlight font-weight-bold">商品合計<%= @order.total_payment- @order.shipping_cost %>円</div>
       <div class="p-2 bd-highlight font-weight-bold">送料<%= @order.shipping_cost %>円</div>
-       <div class="p-2 bd-highlight font-weight-bold">請求金額合計<%= @order.total_payment += @order.shipping_cost %>円</div>
+       <div class="p-2 bd-highlight font-weight-bold">請求金額合計<%= @order.total_payment- @order.shipping_cost + @order.shipping_cost %>円</div>
   </div>
 </div>
 </div>
